@@ -1,1 +1,1 @@
-json.up
+json.meeting @meeting

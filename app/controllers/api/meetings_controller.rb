@@ -6,14 +6,23 @@ class Api::MeetingsController < ApplicationController
   end
 
   def create
-    @meeting = Meeting.create(
+    @meeting = Meeting.new(
       title: params[:title],
       agenda: params[:agenda],
-      time: params[:time]
-      )
-    render 'create.json.jbuilder'
+      time: params[:time],
+      location: params[:location]
+    )
+    if params[:remote]
+      @meeting.remote = params[:remote]
+    end
+    
+    if @meeting.save
+      render 'create.json.jbuilder'
+    else 
+      render json: {errors: @meeting.errors.full_messages}, status: :unprocessable_entity
+    end
   end
-
+  
   def show
     @meeting = Meeting.find(params[:id])
     render 'show.json.jbuilder'
@@ -25,10 +34,14 @@ class Api::MeetingsController < ApplicationController
     @meeting.title = params[:title] || @meeting.title
     @meeting.agenda = params[:agenda] || @meeting.agenda
     @meeting.time = params[:time] || @meeting.time
+    @meeting.location = params[:location] || @meeting.location
+    @meeting.remote = params[:remote] || @meeting.remote
 
-    @meeting.save
-
-    render 'update.json.jbuilder'
+    if @meeting.save
+      render 'update.json.jbuilder'
+    else 
+      render json: {errors: @meeting.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def destroy 
@@ -37,6 +50,4 @@ class Api::MeetingsController < ApplicationController
 
     render json: {message: "Meeting Deleted"}
   end
-
-
 end
