@@ -18,3 +18,42 @@ meeting.save
 
 meeting = Meeting.new({title:"Jim",agenda:"Justice In Mind meeting",time:"10:30 am"})
 meeting.save
+
+topic = Topic.new({name: "Joey's bobo"})
+topic.save
+
+topic = Topic.new({name: "Kiki's bobo"})
+topic.save
+
+topic = Topic.new({name: "Elly's bobo"})
+topic.save
+
+topic = Topic.new({name: "Matt's bobo"})
+topic.save
+
+topic = Topic.new({name: "Willy's bobo"})
+topic.save
+
+topic = Topic.new({name: "Tootry's bobo"})
+topic.save
+
+topic = Topic.new({name: "Michael's bobo"})
+topic.save
+
+topic = Topic.new({name: "Donny's bobo"})
+topic.save
+
+
+MeetingTopic.create!([
+  {meeting_id: 1, topic_id: 1},
+  {meeting_id: 1, topic_id: 6},
+  {meeting_id: 2, topic_id: 3},
+  {meeting_id: 2, topic_id: 4},
+  {meeting_id: 2, topic_id: 7},
+  {meeting_id: 3, topic_id: 3},
+  {meeting_id: 3, topic_id: 4},
+  {meeting_id: 3, topic_id: 5},
+  {meeting_id: 4, topic_id: 1},
+  {meeting_id: 4, topic_id: 2},
+  {meeting_id: 4, topic_id: 7}
+])

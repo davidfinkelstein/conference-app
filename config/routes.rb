@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     patch "/meetings/:id" => "meetings#update"
     delete "meetings/:id" => "meetings#destroy"
 
+    post "/users" => "users#create"
+    post "/sessions" => "sessions#create"
+
 
     # get "/first_meeting" => "meetings#first_meeting"
   end
