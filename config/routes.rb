@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
+    post "/meeting_topics" => "meeting_topics#create"
 
 
     # get "/first_meeting" => "meetings#first_meeting"
