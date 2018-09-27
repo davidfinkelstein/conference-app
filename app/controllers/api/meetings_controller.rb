@@ -27,7 +27,7 @@ class Api::MeetingsController < ApplicationController
   
   def show
     @meeting = Meeting.find(params[:id])
-    render 'show.json.jbuilder'
+    render 'show.html.erb'
   end
 
   def update
